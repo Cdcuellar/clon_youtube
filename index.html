@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<!-- DOCTYPE: Indica que el documento usa HTML5 -->
+<html lang="es">
+<!-- lang="es": Indica que el idioma principal del documento es español -->
+
+<head>
+  <!-- <head>: Contiene metadatos e información técnica (no visible como contenido principal) -->
+
+  <meta charset="UTF-8" />
+  <!-- meta charset: Configura la codificación de caracteres (tildes, ñ, etc.) -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- meta viewport: Hace que el sitio se adapte mejor a pantallas móviles -->
+
+  <meta name="description" content="Clon de YouTube hecho solo con HTML5 semántico (sin CSS/JS). Incluye buscador, video principal con iframe y videos recomendados." />
+  <!-- meta description: Descripción para SEO (buscadores) -->
+
+  <title>Clon de YouTube (Solo HTML)</title>
+  <!-- title: Título que aparece en la pestaña del navegador -->
+</head>
+
+<body>
+  <!-- <body>: Contiene todo el contenido visible de la página -->
+
+  <header>
+    <!-- <header>: Encabezado del sitio (parte superior) -->
+
+    <nav aria-label="Barra superior">
+      <!-- <nav>: Navegación principal. aria-label ayuda a lectores de pantalla -->
+
+      <a href="#inicio" aria-label="Ir al inicio">
+        <!-- <a>: enlace. Lleva a la sección #inicio (ancla en el mismo documento) -->
+
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg"
+          alt="YouTube"
+          width="140"
+        />
+        <!-- <img>: elemento vacío. Muestra una imagen (logo). alt describe la imagen para accesibilidad -->
+      </a>
+
+      <!-- Buscador funcional sin JavaScript:
+           Enviamos el texto a la búsqueda real de YouTube (GET + search_query). -->
+      <form action="https://www.youtube.com/results" method="get" role="search" aria-label="Formulario de búsqueda">
+        <!-- action: URL destino. method=get: envía parámetros por URL -->
+
+        <label for="q">Buscar</label>
+        <!-- <label>: etiqueta accesible para el input -->
+
+        <input id="q" name="search_query" type="search" placeholder="Buscar" />
+        <!-- input: donde escribes. name="search_query" es el parámetro que YouTube entiende -->
+
+        <button type="submit">Buscar</button>
+        <!-- button submit: envía el formulario -->
+      </form>
+
+      <ul aria-label="Enlaces rápidos">
+        <!-- <ul>: lista de enlaces (sin CSS igual se ve ordenada por el navegador) -->
+        <li><a href="#recomendados">Recomendados</a></li>
+        <li><a href="#watch-1">Ver Video 1</a></li>
+        <li><a href="#watch-2">Ver Video 2</a></li>
+        <li><a href="#watch-3">Ver Video 3</a></li>
+      </ul>
+    </nav>
+
+    <hr />
+    <!-- <hr>: línea horizontal (elemento vacío) para separar secciones -->
+  </header>
+
+  <main id="inicio">
+    <!-- <main>: Contenido principal del documento -->
+    <!-- id="inicio": ancla para volver arriba -->
+
+    <!-- Desafío sin CSS:
+         Usamos una tabla para simular layout de 2 columnas (contenido + sidebar) -->
+    <table aria-label="Layout principal sin CSS (contenido y barra lateral)">
+      <tr>
+        <!-- Fila única con 2 columnas -->
+
+        <td>
+          <!-- Columna izquierda: video principal + secciones de reproducción -->
+
+          <section aria-label="Video principal">
+            <!-- section: bloque temático -->
+
+            <h1>Clon de YouTube (Solo HTML)</h1>
+            <!-- h1: título principal -->
+
+            <article id="watch-1" aria-label="Video 1 principal">
+              <!-- article: tarjeta de contenido independiente -->
+              <!-- id="watch-1": ancla para navegar a este video -->
+
+              <header>
+                <!-- header del artículo -->
+                <h2>Learn HTML – Full Tutorial for Beginners</h2>
+
+                <p>
+                  <strong>Orden:</strong> 1 •
+                  <strong>Fuente:</strong> YouTube •
+                  <strong>Tipo:</strong> Tutorial
+                </p>
+              </header>
+
+              <!-- IFRAME del video 1 (en el orden que diste):
+                   - Usamos youtube-nocookie para reducir problemas de cookies
+                   - start=1223 para empezar donde tu link indica
+                   - referrerpolicy ayuda en algunos casos de Error 153 -->
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube-nocookie.com/embed/kUMe1FH4CHE?start=1223"
+                title="Learn HTML – Full Tutorial for Beginners"
+                frameborder="0"
+                referrerpolicy="strict-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+
+              <p>
+                <strong>Descripción:</strong> Curso completo de HTML para principiantes. Este prototipo usa solo HTML5 semántico.
+              </p>
+
+              <p>
+                <!-- Enlace alternativo (muy importante):
+                     Si el iframe se bloquea por red/navegador, el usuario puede abrirlo en YouTube -->
+                Si el video no se muestra aquí (por bloqueo de red o configuración), ábrelo en:
+                <a href="https://www.youtube.com/watch?v=kUMe1FH4CHE&t=1223s">YouTube</a>.
+              </p>
+            </article>
+          </section>
+
+          <hr />
+
+          <section aria-label="Modo ver video (sin JavaScript)">
+            <!-- Como no hay JS, simulamos navegación con anclas (#watch-2, #watch-3) -->
+
+            <h2>Más videos (modo “Ver” con anclas)</h2>
+            <p>
+              Sin JavaScript no podemos “cambiar” el mismo reproductor dinámicamente.
+              En su lugar, cada recomendado te lleva a su sección con su propio <code>&lt;iframe&gt;</code>.
+            </p>
+
+            <article id="watch-2" aria-label="Video 2">
+              <header>
+                <h3>Learn HTML &amp; CSS – Full Course for Beginners</h3>
+                <p><strong>Orden:</strong> 2</p>
+              </header>
+
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube-nocookie.com/embed/a_iQb1lnAEQ"
+                title="Learn HTML & CSS – Full Course for Beginners"
+                frameborder="0"
+                referrerpolicy="strict-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+
+              <p>
+                <strong>Descripción:</strong> Curso completo de HTML y CSS (aunque esta página NO usa CSS por restricción).
+              </p>
+
+              <p>
+                Si el video no se muestra aquí, ábrelo en:
+                <a href="https://www.youtube.com/watch?v=a_iQb1lnAEQ">YouTube</a>.
+              </p>
+            </article>
+
+            <hr />
+
+            <article id="watch-3" aria-label="Video 3">
+              <header>
+                <h3>HTML / CSS Tutorial – Create an Order Summary Component</h3>
+                <p><strong>Orden:</strong> 3</p>
+              </header>
+
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube-nocookie.com/embed/SR5GxoFhIAU"
+                title="HTML / CSS Tutorial – Create an Order Summary Component"
+                frameborder="0"
+                referrerpolicy="strict-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+
+              <p>
+                <strong>Descripción:</strong> Tutorial para crear un componente “Order Summary” (sin embargo aquí solo demostramos la incrustación).
+              </p>
+
+              <p>
+                Si el video no se muestra aquí, ábrelo en:
+                <a href="https://www.youtube.com/watch?v=SR5GxoFhIAU">YouTube</a>.
+              </p>
+            </article>
+          </section>
+        </td>
+
+        <td>
+          <!-- Columna derecha: barra lateral (menú y recomendados) -->
+
+          <aside aria-label="Barra lateral">
+            <!-- aside: contenido complementario -->
+
+            <nav aria-label="Menú lateral">
+              <h2>Menú</h2>
+              <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#recomendados">Videos recomendados</a></li>
+                <li><a href="#watch-1">Ir al Video 1</a></li>
+                <li><a href="#watch-2">Ir al Video 2</a></li>
+                <li><a href="#watch-3">Ir al Video 3</a></li>
+              </ul>
+            </nav>
+
+            <hr />
+
+            <section id="recomendados" aria-label="Videos recomendados">
+              <!-- Sección de recomendados con miniaturas y links -->
+
+              <h2>Recomendados</h2>
+
+              <ul aria-label="Lista de videos sugeridos">
+                <li>
+                  <!-- Miniatura + enlace al ancla del video 1 -->
+                  <a href="#watch-1">
+                    <img
+                      src="https://i.ytimg.com/vi/kUMe1FH4CHE/hqdefault.jpg"
+                      alt="Miniatura: Learn HTML – Full Tutorial for Beginners"
+                      width="160"
+                    />
+                    Learn HTML – Full Tutorial for Beginners
+                  </a>
+                  <p>
+                    <small>Enlace directo: <a href="https://www.youtube.com/watch?v=kUMe1FH4CHE&t=1223s">YouTube</a></small>
+                  </p>
+                </li>
+
+                <li>
+                  <a href="#watch-2">
+                    <img
+                      src="https://i.ytimg.com/vi/a_iQb1lnAEQ/hqdefault.jpg"
+                      alt="Miniatura: Learn HTML & CSS – Full Course for Beginners"
+                      width="160"
+                    />
+                    Learn HTML &amp; CSS – Full Course for Beginners
+                  </a>
+                  <p>
+                    <small>Enlace directo: <a href="https://www.youtube.com/watch?v=a_iQb1lnAEQ">YouTube</a></small>
+                  </p>
+                </li>
+
+                <li>
+                  <a href="#watch-3">
+                    <img
+                      src="https://i.ytimg.com/vi/SR5GxoFhIAU/hqdefault.jpg"
+                      alt="Miniatura: HTML / CSS Tutorial – Create an Order Summary Component"
+                      width="160"
+                    />
+                    HTML / CSS Tutorial – Create an Order Summary Component
+                  </a>
+                  <p>
+                    <small>Enlace directo: <a href="https://www.youtube.com/watch?v=SR5GxoFhIAU">YouTube</a></small>
+                  </p>
+                </li>
+              </ul>
+
+              <hr />
+
+              <section aria-label="Notas de accesibilidad">
+                <h3>Notas de accesibilidad</h3>
+                <ul>
+                  <li>El buscador usa <code>role="search"</code> y tiene <code>&lt;label&gt;</code> asociado.</li>
+                  <li>Los <code>&lt;iframe&gt;</code> tienen <code>title</code> descriptivo.</li>
+                  <li>Las imágenes tienen <code>alt</code> para lectores de pantalla.</li>
+                  <li>La navegación usa anclas (<code>#watch-1</code>, etc.) para simular “cambio de página” sin JS.</li>
+                </ul>
+              </section>
+            </section>
+          </aside>
+        </td>
+      </tr>
+    </table>
+  </main>
+
+  <footer>
+    <!-- footer: pie de página -->
+    <hr />
+
+    <section aria-label="Acerca del prototipo">
+      <h2>Acerca de</h2>
+      <p>
+        Prototipo tipo “Clon de YouTube” realizado con HTML5 semántico exclusivamente.
+        Restricciones: sin CSS, sin JavaScript. La tabla se usa solo para aproximar un layout similar.
+      </p>
+      <p>
+        Elementos vacíos usados: <code>&lt;meta&gt;</code>, <code>&lt;img /&gt;</code>, <code>&lt;hr /&gt;</code>.
+      </p>
+    </section>
+
+    <nav aria-label="Enlaces del pie">
+      <a href="#inicio">Volver arriba</a> |
+      <a href="#recomendados">Recomendados</a>
+    </nav>
+  </footer>
+</body>
+</html>
