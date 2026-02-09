@@ -11,8 +11,8 @@ Chatgpt 5.2
 El enfoque principal de esta variante es la descripcion detallada de los elementos y el uso de etiquetas de definicion de datos.
 
 ### Caracteristicas Tecnicas:
-- Estructura de Datos: Se priorizo el uso de <thead>, <tbody> y <tfoot> dentro de las tablas para asegurar que la informacion sea legible por lectores de pantalla.
-- Semantica de Texto: Utilizacion de etiquetas de aclaracion como <abbr> y <dfn> para dotar de contexto tecnico a las descripciones de los videos.
+- Estructura de Datos: Se priorizo el uso de &lt;thead&gt;, &lt;tbody&gt; y &lt;tfoot&gt; dentro de las tablas para asegurar que la informacion sea legible por lectores de pantalla.
+- Semantica de Texto: Utilizacion de etiquetas de aclaracion como &lt;abbr&gt; y &lt;dfn&gt; para dotar de contexto tecnico a las descripciones de los videos.
 - Accesibilidad: Implementacion extensiva de atributos aria-label en todos los contenedores de navegacion (nav) y secciones (section).
 - Busqueda: Sistema de datalist vinculado al input de busqueda para ofrecer sugerencias de los videos disponibles de manera inmediata.
 
