@@ -4,6 +4,9 @@
 
 Esta version del clon de YouTube se centra en el cumplimiento de estandares de accesibilidad y organizacion de datos internos mediante HTML5.
 
+## Modelo usado
+Chatgpt 5.2
+
 ## Detalles de la Version
 El enfoque principal de esta variante es la descripcion detallada de los elementos y el uso de etiquetas de definicion de datos.
 
